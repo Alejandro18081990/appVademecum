@@ -1,0 +1,7 @@
+{
+  "name": "appVademecum",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
