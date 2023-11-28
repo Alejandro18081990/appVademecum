@@ -7,16 +7,20 @@ import { Medicamento } from '../interfaces/medicamento';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
   vademecum!: Medicamento;
   constructor(private service: VademecumService) {
-    
+  
   }
 
   ngOnInit(): void {
+    this.getListadoMedicamentos();
+
+  }
+
+  getListadoMedicamentos() {
     this.service.getAll().subscribe(medicamentos => {
       this.vademecum = medicamentos
     });
-    
   }
 }

@@ -7,10 +7,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VademecumService {
-  url: string = `${environment.apiUrl}medicamentos?/resultados/`;
-  constructor(private http : HttpClient) { }
-  
-  getAll(): Observable<Medicamento>{
-    return this.http.get<Medicamento>(this.url);
+  urlAll: string = `${environment.apiUrl}medicamentos?/resultados/`;
+  urlOne: string = `${environment.apiUrl}medicamento?/nregistro=`;
+  constructor(private http: HttpClient) { }
+
+  getAll(): Observable<Medicamento> {
+    return this.http.get<Medicamento>(this.urlAll);
+  }
+
+  getMedicamento(nregistro: string): Observable<Medicamento> {
+    const urlBusqueda = `${this.urlOne}${nregistro}`
+    return this.http.get<Medicamento>(urlBusqueda);
   }
 }
