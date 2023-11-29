@@ -10,7 +10,7 @@ import { Medicamento } from '../interfaces/medicamento';
 export class HomePage implements OnInit {
   vademecum!: Medicamento;
   constructor(private service: VademecumService) {
-  
+
   }
 
   ngOnInit(): void {

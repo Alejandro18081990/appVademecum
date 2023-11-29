@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="vademecum!=undefined">
   <ion-card [routerLink]="['/detalle-medicamento',medicamento.nregistro]" *ngFor="let medicamento of vademecum.resultados">
     <ion-card-title >Nombre del medicamento: {{medicamento.nombre}}</ion-card-title>
     <ion-card-content>

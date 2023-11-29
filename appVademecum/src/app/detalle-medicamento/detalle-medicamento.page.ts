@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Medicamento } from '../interfaces/medicamento';
 import { ActivatedRoute } from '@angular/router';
 import { VademecumService } from '../services/vademecum.service';
-import { Medicamento } from '../interfaces/medicamento';
 
 @Component({
   selector: 'app-detalle-medicamento',
@@ -17,12 +17,13 @@ export class DetalleMedicamentoPage implements OnInit {
 
   ngOnInit() {
     this.router.params.subscribe((params) => { this.nRegistro = params['nRegistro'] });
+    this.getDetalleMedicamento();
   }
 
   getDetalleMedicamento() {
-    this.service.getMedicamento(this.nRegistro).subscribe(respuesta => { this.detalleMedicamento = respuesta 
-    console.log(this.detalleMedicamento);
+    this.service.getMedicamento(this.nRegistro).subscribe(respuesta => {
+      this.detalleMedicamento = respuesta;
+      console.log(this.detalleMedicamento.resultados);
     });
   }
-
 }

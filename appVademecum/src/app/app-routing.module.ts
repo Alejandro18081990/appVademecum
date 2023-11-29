@@ -11,7 +11,6 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  
   {
     path: 'detalle-medicamento/:nRegistro',
     loadChildren: () => import('./detalle-medicamento/detalle-medicamento.module').then( m => m.DetalleMedicamentoPageModule)
