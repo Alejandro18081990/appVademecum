@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VademecumService } from '../services/vademecum.service';
-import { Medicamento } from '../interfaces/medicamento';
+import { Medicamentos } from '../interfaces/medicamentos';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { Medicamento } from '../interfaces/medicamento';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  vademecum!: Medicamento;
+  vademecum!: Medicamentos;
   constructor(private service: VademecumService) {
 
   }

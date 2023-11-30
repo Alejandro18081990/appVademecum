@@ -1,14 +1,18 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>detalleMedicamento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card *ngIf="detalleMedicamento!=undefined" >
-    <ion-card-title >
+  <ion-card *ngIf="detalleMedicamento!=undefined">
+    <ion-card-title>
       <ion-card-content>
-        
+        <img src={{urlFotos}}>
+        <ion-item>{{detalleMedicamento.nombre}}</ion-item>
+        <ion-item>{{detalleMedicamento.nregistro}}</ion-item>
+        <ion-item>{{detalleMedicamento.pactivos}}</ion-item>
+        <ion-item>{{detalleMedicamento.labtitular}}</ion-item>
       </ion-card-content>
     </ion-card-title>
   </ion-card>
