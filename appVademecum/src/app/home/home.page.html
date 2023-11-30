@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="danger">
+  <ion-toolbar color="success">
     <ion-title>
       Vademecum Ale
     </ion-title>
@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="vademecum!=undefined">
-  <ion-card [routerLink]="['/detalle-medicamento',medicamento.nregistro]" *ngFor="let medicamento of vademecum.resultados">
+  <ion-card color="light" [routerLink]="['/detalle-medicamento',medicamento.nregistro]" *ngFor="let medicamento of vademecum.resultados">
     <ion-card-title >Nombre del medicamento: {{medicamento.nombre}}</ion-card-title>
     <ion-card-content>
       <ion-item>Laboratorio titular: {{medicamento.labtitular}}</ion-item>
