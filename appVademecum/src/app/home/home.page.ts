@@ -10,13 +10,24 @@ import { LoadingController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   vademecum!: Medicamentos;
+  pagina : number;
   constructor(private service: VademecumService , private loadingCtrl : LoadingController) {
-
+    this.pagina = 1;
   }
 
   ngOnInit(): void {
-    this.getListadoMedicamentos();
+    //this.getListadoMedicamentos();
+    this.getListadoMedicamentosByPagina();
+  }
 
+  async getListadoMedicamentosByPagina() {
+    const loading = await this.loadingCtrl.create({message: "Cargando ... Espere por favor..."});
+    loading.present();
+    this.service.getAllByPage(this.pagina).subscribe(medicamentos => {
+      this.vademecum = medicamentos
+      loading.dismiss();
+    });
+    this.pagina++;
   }
 
   async getListadoMedicamentos() {

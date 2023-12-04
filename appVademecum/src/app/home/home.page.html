@@ -4,6 +4,7 @@
     <ion-title>
       AppVademecum
     </ion-title>
+    <ion-button slot="end" color="danger" (click)="getListadoMedicamentosByPagina()">Siguiente página{{pagina - 1}}</ion-button>
   </ion-toolbar>
 </ion-header>
 <link href="./home.page.scss">
@@ -16,4 +17,5 @@
       <ion-item>Laboratorio titular: {{medicamento.labtitular}}</ion-item>
     </ion-card-content>
   </ion-card>
+  
 </ion-content>

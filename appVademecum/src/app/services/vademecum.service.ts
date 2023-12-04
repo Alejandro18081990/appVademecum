@@ -9,11 +9,17 @@ import { Medicamento } from '../interfaces/medicamento';
 })
 export class VademecumService {
   urlAll: string = `${environment.apiUrl}medicamentos?/resultados/`;
+  urlPag: string = `${environment.apiUrl}medicamentos?pagina=`;
   urlOne: string = `${environment.apiUrl}medicamento?nregistro=`;
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Medicamentos> {
     return this.http.get<Medicamentos>(this.urlAll);
+  }
+
+  getAllByPage(pagina : number){
+    const urlBusqueda = `${this.urlPag}${pagina}`;
+    return this.http.get<Medicamentos>(urlBusqueda);
   }
 
   getMedicamento(nregistro: string): Observable<Medicamento> {
