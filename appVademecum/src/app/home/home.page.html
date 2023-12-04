@@ -1,14 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="success">
+<ion-header [translucent]="true" id="header">
+  <ion-toolbar color="danger">
+    <img src="../../assets/png-clipart-physician-staff-of-hermes-caduceus-as-a-symbol-of-medicine-health-care-symbol-removebg-preview.png" id="caduceo_png">
     <ion-title>
-      Vademecum Ale
+      AppVademecum
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<link href="./home.page.scss">
 
 <ion-content [fullscreen]="true" *ngIf="vademecum!=undefined">
-  <ion-card color="light" [routerLink]="['/detalle-medicamento',medicamento.nregistro]" *ngFor="let medicamento of vademecum.resultados">
-    <ion-card-title >Nombre del medicamento: {{medicamento.nombre}}</ion-card-title>
+  <ion-card color="light" [routerLink]="['/detalle-medicamento',medicamento.nregistro]"
+    *ngFor="let medicamento of vademecum.resultados">
+    <ion-card-title>Nombre del medicamento: {{medicamento.nombre}}</ion-card-title>
     <ion-card-content>
       <ion-item>Laboratorio titular: {{medicamento.labtitular}}</ion-item>
     </ion-card-content>

@@ -1,24 +1,25 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="light">
-    <img src="../../assets/png-clipart-physician-staff-of-hermes-caduceus-as-a-symbol-of-medicine-health-care-symbol.png" style="width: 10%;">
-    <ion-title>detalleMedicamento</ion-title>
+  <ion-toolbar color="danger">
+    <img
+      src="../../assets/png-clipart-physician-staff-of-hermes-caduceus-as-a-symbol-of-medicine-health-care-symbol-removebg-preview.png" id="caduceo_png">
+    <ion-title>appVademecum</ion-title>
   </ion-toolbar>
-</ion-header>
+  </ion-header>
+  <link href="./detalle-medicamento.page.scss">
 
 <ion-content [fullscreen]="true" *ngIf="detalleMedicamento!=undefined">
   <ion-card color="light">
     <ion-card-title>
-      <ion-card-content >
+      <ion-card-content>
         <img src={{urlFotos}}>
-        <ion-item color="light">{{detalleMedicamento.nregistro}}</ion-item>
-        <ion-item color="light">{{detalleMedicamento.pactivos}}</ion-item>
-        <ion-item color="light">{{detalleMedicamento.labtitular}}</ion-item>    
-        <ion-item color="light">{{esReceta}}</ion-item>    
-        <ion-item color="light">{{esGenerico}}</ion-item>    
+        <ion-item color="light">NºRegistro: {{detalleMedicamento.nregistro}}</ion-item>
+        <ion-item color="light">Principio activo: {{detalleMedicamento.pactivos}}</ion-item>
+        <ion-item color="light">Laboratorio titular: {{detalleMedicamento.labtitular}}</ion-item>
+        <ion-item color="light" *ngIf="detalleMedicamento.generico">Medicamento sujeto a prescripción médica</ion-item>
+        <ion-item color="light" *ngIf="detalleMedicamento.receta">EFG</ion-item>
 
-        
+
       </ion-card-content>
     </ion-card-title>
   </ion-card>
 </ion-content>
-

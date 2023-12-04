@@ -3,6 +3,7 @@ import { Medicamentos } from '../interfaces/medicamentos';
 import { ActivatedRoute } from '@angular/router';
 import { VademecumService } from '../services/vademecum.service';
 import { Medicamento } from '../interfaces/medicamento';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-medicamento',
@@ -13,12 +14,10 @@ export class DetalleMedicamentoPage implements OnInit {
   nRegistro: string;
   detalleMedicamento!: Medicamento;
   urlFotos !: string;
-  esReceta: string;
-  esGenerico: string;
-  constructor(private router: ActivatedRoute, private service: VademecumService) {
+  
+  constructor(private router: ActivatedRoute, private service: VademecumService, private loadingCtrl : LoadingController) {
     this.nRegistro = "";
-    this.esReceta = "";
-    this.esGenerico = "";
+    
   }
 
   ngOnInit() {
@@ -28,30 +27,17 @@ export class DetalleMedicamentoPage implements OnInit {
 
   }
 
-  getDetalleMedicamento() {
+  async getDetalleMedicamento() {
+    const loading = await this.loadingCtrl.create({message: "Cargando ... Espere por favor..."});
+    loading.present();
     this.service.getMedicamento(this.nRegistro).subscribe(respuesta => {
       this.detalleMedicamento = respuesta;
+      loading.dismiss();
     });
   }
 
   manejoFotos() {
     this.urlFotos = "https://cima.aemps.es/cima/fotos/thumbnails/materialas/" + this.nRegistro + "/" + this.nRegistro + "_materialas.jpg";
-  }
-
-  IonViewWillEnter() {
-    if (this.detalleMedicamento != undefined) {
-      if (this.detalleMedicamento.generico) {
-        this.esGenerico = "Medicamento genérico";
-      } else {
-        this.esGenerico = "Medicamento no genérico";
-      }
-
-      if (this.detalleMedicamento.receta) {
-        this.esReceta = "Medicamento sujeto a prescripción médica";
-      } else {
-        this.esReceta = "Medicamento no sujeto a prescripción médica";
-      }
-    }
   }
 
 }
